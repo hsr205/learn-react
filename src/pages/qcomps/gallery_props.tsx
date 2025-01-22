@@ -1,55 +1,56 @@
+import {ScientistProfile} from "@/types/scientist-profile";
+
+function Profile({person, unOrderList}: ScientistProfile) {
+
+    return (
+        <section className="profile">
+            <h2>{person.scientistName}</h2>
+            <img
+                className="avatar"
+                src={person.imageSrc}
+                alt={person.scientistName}
+                width={70}
+                height={70}
+            />
+            <ul>
+                <li>
+                    <b>Profession: </b>
+                    {unOrderList.professionStr}
+                </li>
+                <li>
+                    <b>Awards: {unOrderList.awardNum} </b>
+                    {unOrderList.awardDescription}
+                </li>
+                <li>
+                    <b>Discovered: </b>
+                    {unOrderList.scientificDiscovery}
+                </li>
+            </ul>
+        </section>
+    );
+
+}
+
 export default function Gallery() {
-  return (
-    <div>
-      <h1>Notable Scientists</h1>
-      <section className="profile">
-        <h2>Maria Skłodowska-Curie</h2>
-        <img
-          className="avatar"
-          src='https://i.imgur.com/szV5sdGs.jpg'
-          alt="Maria Skłodowska-Curie"
-          width={70}
-          height={70}
-        />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            physicist and chemist
-          </li>
-          <li>
-            <b>Awards: 4 </b>
-            (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            polonium (element)
-          </li>
-        </ul>
-      </section>
-      <section className="profile">
-        <h2>Katsuko Saruhashi</h2>
-        <img
-          className="avatar"
-          src='https://i.imgur.com/YfeOqp2s.jpg'
-          alt="Katsuko Saruhashi"
-          width={70}
-          height={70}
-        />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            geochemist
-          </li>
-          <li>
-            <b>Awards: 2 </b>
-            (Miyake Prize for geochemistry, Tanaka Prize)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            a method for measuring carbon dioxide in seawater
-          </li>
-        </ul>
-      </section>
-    </div>
-  );
+    return (
+        <div>
+            <Profile
+                person={{scientistName: "Maria Skłodowska-Curie", imageSrc: "https://i.imgur.com/szV5sdGs.jpg"}}
+                unOrderList={{
+                    professionStr: "physicist and chemist",
+                    awardNum: 4,
+                    awardDescription: "(Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)",
+                    scientificDiscovery: "polonium (element)"
+                }}/>
+
+            <Profile
+                person={{scientistName: "Katsuko Saruhashi", imageSrc: "https://i.imgur.com/YfeOqp2s.jpg"}}
+                unOrderList={{
+                    professionStr: "geochemist",
+                    awardNum: 2,
+                    awardDescription: "(Miyake Prize for geochemistry, Tanaka Prize)",
+                    scientificDiscovery: "a method for measuring carbon dioxide in seawater"
+                }}/>
+        </div>
+    );
 }
