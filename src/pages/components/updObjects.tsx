@@ -19,7 +19,9 @@ export default function Form() {
 
     return (
         <>
-            <img src={person.artwork.image}/>
+            <div>
+                <img src={person.artwork.image}/>
+            </div>
             <label>
                 City:
                 <input
