@@ -1,50 +1,47 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 export default function Scoreboard() {
-  const [player, setPlayer] = useState({
-    firstName: 'John Woodrow',
-    lastName: 'Wilson',
-    likescore: 10,
-  });
-
-  function handlePlusClick() {
-    player.likescore++;
-  }
-
-  function handleFirstNameChange(e: { target: { value: string; }; }) {
-    setPlayer({
-      ...player,
-      firstName: e.target.value,
+    const [player, setPlayer] = useState({
+        firstName: 'John Woodrow',
+        lastName: 'Wilson',
+        likeScore: 10,
     });
-  }
 
-  function handleLastNameChange(e: { target: { value: string; }; }) {
-    player.lastName = e.target.value;
-  }
+    function handlePlusClick() {
+        setPlayer({...player, likeScore: player.likeScore + 1});
+    }
 
-  return (
-    <>
-      <label>
-        Like Score: <b>{player.likescore}</b>
-        {'  '}
-        <button onClick={handlePlusClick}>
-          +1
-        </button>
-      </label>
-      <label>
-        First name:
-        <input
-          value={player.firstName}
-          onChange={handleFirstNameChange}
-        />
-      </label>
-      <label>
-        Last name:
-        <input
-          value={player.lastName}
-          onChange={handleLastNameChange}
-        />
-      </label>
-    </>
-  );
+    function handleFirstNameChange(e: { target: { value: string; }; }) {
+        setPlayer({...player, firstName: e.target.value,});
+    }
+
+    function handleLastNameChange(e: { target: { value: string; }; }) {
+        setPlayer({...player, lastName: e.target.value,});
+    }
+
+    return (
+        <>
+            <label>
+                Like Score: <b>{player.likeScore}</b>
+                {'  '}
+                <button onClick={handlePlusClick}>
+                    +1
+                </button>
+            </label>
+            <label>
+                First name:
+                <input
+                    value={player.firstName}
+                    onChange={handleFirstNameChange}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    value={player.lastName}
+                    onChange={handleLastNameChange}
+                />
+            </label>
+        </>
+    );
 }
